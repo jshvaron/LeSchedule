@@ -3,8 +3,15 @@
 // in the html.
 
 // time/date 
-var time = dayjs().format('ddd, MMM D, YYYY h:mm A	');
-$('#currentDay').text(time);
+$(document).ready(function() {
+  function timeMachine(){
+    var time = dayjs().format('ddd, MMM D, YYYY h:mm A');
+    $('#currentDay').text(time);
+  }
+  timeMachine();
+  setInterval(timeMachine, 1000);
+});
+
 
 
 $(function () {
