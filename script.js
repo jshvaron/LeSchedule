@@ -2,7 +2,7 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 
-// time/date 
+// time/date auto update
 $(document).ready(function() {
   function timeMachine(){
     var time = dayjs().format('ddd, MMM D, YYYY h:mm A');
@@ -12,6 +12,26 @@ $(document).ready(function() {
   setInterval(timeMachine, 1000);
 });
 
+// save task with savebtn and targeting to save description
+$(document).ready(function(){
+  // grabs all .saveBtn
+  const saveButtons = document.querySelectorAll('.saveBtn')
+  // loops through each to find an event listner
+  saveButtons.forEach( function(saveButtons){
+    saveButtons.addEventListener('click', function(){
+      // grabs associated data
+      const task = $(this).siblings('.description').val();
+      const block = $(this).parent().attr('id');
+      // sets data to storage
+      localStorage.setItem(block, task);
+      // logs the goods
+      console.log(block, task);
+    
+    });
+
+  })
+
+});
 
 
 $(function () {
@@ -21,6 +41,10 @@ $(function () {
   // function? How can DOM traversal be used to get the "hour-x" id of the
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
+  const saveButton = document.querySelector('.savebtn')
+
+
+
   //
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
