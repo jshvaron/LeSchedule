@@ -3,7 +3,8 @@
 // in the html.
 
 // time/date 
-
+var time = dayjs().format('ddd, MMM D, YYYY h:mm A	');
+$('#currentDay').text(time);
 
 
 $(function () {
